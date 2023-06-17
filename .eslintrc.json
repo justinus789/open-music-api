@@ -10,6 +10,7 @@
   "rules": {
     "no-console": "off",
     "camelcase": "off",
-    "object-curly-newline": "off"
+    "object-curly-newline": "off",
+    "import/no-extraneous-dependencies": "off"
   }
 }
