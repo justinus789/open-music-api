@@ -31,7 +31,7 @@ class PlaylistsService {
       values: [id],
     };
     const result = await this.pool.query(query);
-    if (!result.rows.length) {
+    if (!result.rowCount) {
       throw new NotFoundError('Playlist tidak ditemukan');
     }
     const playlist = result.rows[0];
@@ -77,7 +77,7 @@ class PlaylistsService {
 
     const result = await this.pool.query(query);
 
-    if (!result.rows.length) {
+    if (!result.rowCount) {
       throw new NotFoundError('Playlist gagal dihapus. Id tidak ditemukan');
     }
   }
@@ -85,7 +85,7 @@ class PlaylistsService {
   async addPlaylistSongById({ playlistId, songId, userId }) {
     const song = await this.pool.query(`SELECT * FROM songs where id = '${songId}'`);
 
-    if (!song.rows.length) {
+    if (!song.rowCount) {
       throw new NotFoundError('Lagu tidak ditemukan');
     }
 
@@ -133,7 +133,7 @@ class PlaylistsService {
     };
     const result = await this.pool.query(query);
 
-    if (!result.rows.length) {
+    if (!result.rowCount) {
       throw new NotFoundError('Playlist tidak ditemukan');
     }
 
@@ -164,7 +164,7 @@ class PlaylistsService {
 
     const result = await this.pool.query(query);
 
-    if (!result.rows.length) {
+    if (!result.rowCount) {
       throw new NotFoundError('Playlist gagal dihapus. Id tidak ditemukan');
     }
 
@@ -175,7 +175,7 @@ class PlaylistsService {
   async getPlaylistSongActivitiesUserId(playlistId) {
     const result = await this.pool.query(`SELECT user_id FROM playlist_song_activities WHERE playlist_id = '${playlistId}'`);
 
-    if (!result.rows.length) {
+    if (!result.rowCount) {
       throw new NotFoundError('Playlist gagal dihapus. Id tidak ditemukan');
     }
 
